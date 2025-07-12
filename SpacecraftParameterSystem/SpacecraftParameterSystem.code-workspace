@@ -1,0 +1,69 @@
+{
+    "folders": [
+        {
+            "path": "."
+        }
+    ],
+    "settings": {
+        "java.configuration.updateBuildConfiguration": "automatic",
+        "java.compile.nullAnalysis.mode": "automatic",
+        "java.debug.settings.onBuildFailureProceed": true,
+        "java.eclipse.downloadSources": true,
+        "java.maven.downloadSources": true,
+        "java.saveActions.organizeImports": true,
+        "files.exclude": {
+            "**/.classpath": true,
+            "**/.project": true,
+            "**/.settings": true,
+            "**/.factorypath": true
+        },
+        "java.project.sourcePaths": ["src"],
+        "java.project.outputPath": "WebContent/WEB-INF/classes",
+        "java.project.referencedLibraries": [
+            "WebContent/WEB-INF/lib/**/*.jar"
+        ]
+    },
+    "extensions": {
+        "recommendations": [
+            "vscjava.vscode-java-pack",
+            "SummerSun.vscode-tomcat",
+            "redhat.vscode-community-server-connector"
+        ]
+    },
+    "launch": {
+        "version": "0.2.0",
+        "configurations": [
+            {
+                "type": "java",
+                "name": "Launch Application",
+                "request": "launch",
+                "mainClass": "util.DatabaseUtil",
+                "projectName": "SpacecraftParameterSystem"
+            }
+        ]
+    },
+    "tasks": {
+        "version": "2.0.0",
+        "tasks": [
+            {
+                "label": "Build Project",
+                "type": "shell",
+                "command": "${command:java.build.workspace}",
+                "group": "build",
+                "problemMatcher": []
+            },
+            {
+                "label": "Initialize Database",
+                "type": "shell",
+                "command": "java",
+                "args": [
+                    "-cp",
+                    "WebContent/WEB-INF/classes:WebContent/WEB-INF/lib/*",
+                    "util.DatabaseUtil"
+                ],
+                "group": "test",
+                "problemMatcher": []
+            }
+        ]
+    }
+}

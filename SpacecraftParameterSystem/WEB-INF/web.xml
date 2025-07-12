@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
+         http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+         version="4.0">
+    
+    <display-name>Spacecraft Parameter Management System</display-name>
+    
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+    
+    <servlet>
+        <servlet-name>SaveParameterServlet</servlet-name>
+        <servlet-class>servlet.SaveParameterServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SaveParameterServlet</servlet-name>
+        <url-pattern>/save</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>DeleteParameterServlet</servlet-name>
+        <servlet-class>servlet.DeleteParameterServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeleteParameterServlet</servlet-name>
+        <url-pattern>/delete</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>LoadParameterServlet</servlet-name>
+        <servlet-class>servlet.LoadParameterServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LoadParameterServlet</servlet-name>
+        <url-pattern>/load</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>AutocompleteServlet</servlet-name>
+        <servlet-class>servlet.AutocompleteServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AutocompleteServlet</servlet-name>
+        <url-pattern>/autocomplete</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>UploadCSVServlet</servlet-name>
+        <servlet-class>servlet.UploadCSVServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UploadCSVServlet</servlet-name>
+        <url-pattern>/upload</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>SearchServlet</servlet-name>
+        <servlet-class>servlet.SearchServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SearchServlet</servlet-name>
+        <url-pattern>/search</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>DatabaseTestServlet</servlet-name>
+        <servlet-class>test.DatabaseTestServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DatabaseTestServlet</servlet-name>
+        <url-pattern>/test-db</url-pattern>
+    </servlet-mapping>
+    
+</web-app>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Application Test</title>
+    <script src="js/jquery.min.js"></script>
+</head>
+<body>
+    <h1>Spacecraft Parameter Management System Test</h1>
+    
+    <div>
+        <h3>Autocomplete Test</h3>
+        <label>Spacecraft Name:</label>
+        <input type="text" id="spacecraftName" list="spacecraftName_list" placeholder="Type to see suggestions">
+        <br><br>
+        
+        <label>Subsystem Name:</label>
+        <input type="text" id="subsystemName" list="subsystemName_list" placeholder="Type to see suggestions">
+        <br><br>
+        
+        <button id="testBtn">Test Autocomplete</button>
+    </div>
+    
+    <div id="results"></div>
+    
+    <script>
+        $(document).ready(function() {
+            // Create datalists
+            $("body").append('<datalist id="spacecraftName_list"></datalist>');
+            $("body").append('<datalist id="subsystemName_list"></datalist>');
+            
+            // Test autocomplete
+            $("#testBtn").click(function() {
+                // Test spacecraft autocomplete
+                $.ajax({
+                    url: "autocomplete",
+                    dataType: "json",
+                    data: { type: "spacecraft" },
+                    success: function(data) {
+                        $("#results").append("<p><strong>Spacecraft data:</strong> " + JSON.stringify(data) + "</p>");
+                        
+                        const spacecraftList = $("#spacecraftName_list");
+                        spacecraftList.empty();
+                        data.forEach(function(item) {
+                            spacecraftList.append('<option value="' + item + '">');
+                        });
+                    },
+                    error: function(xhr, status, error) {
+                        $("#results").append("<p><strong>Spacecraft error:</strong> " + error + "</p>");
+                    }
+                });
+                
+                // Test subsystem autocomplete
+                $.ajax({
+                    url: "autocomplete",
+                    dataType: "json",
+                    data: { type: "subsystem" },
+                    success: function(data) {
+                        $("#results").append("<p><strong>Subsystem data:</strong> " + JSON.stringify(data) + "</p>");
+                        
+                        const subsystemList = $("#subsystemName_list");
+                        subsystemList.empty();
+                        data.forEach(function(item) {
+                            subsystemList.append('<option value="' + item + '">');
+                        });
+                    },
+                    error: function(xhr, status, error) {
+                        $("#results").append("<p><strong>Subsystem error:</strong> " + error + "</p>");
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

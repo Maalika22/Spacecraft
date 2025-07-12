@@ -1,0 +1,120 @@
+/* Custom styles for Spacecraft Parameter Management System */
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f5f5f5;
+}
+
+/* Header Styles */
+.header-section {
+    background-color: #343a40;
+    color: white;
+    padding: 20px 0;
+    margin-bottom: 20px;
+}
+
+.header-section h1 {
+    margin-bottom: 10px;
+    font-size: 28px;
+}
+
+.page-info {
+    font-size: 16px;
+}
+
+.page-label {
+    font-weight: bold;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    background-color: #e9ecef;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    height: calc(100vh - 180px);
+    overflow-y: auto;
+}
+
+.greeting h3 {
+    color: #007bff;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 10px;
+}
+
+/* Parameter Section Styles */
+.parameter-section {
+    background-color: #000000;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    height: calc(100vh - 180px);
+    overflow-y: auto;
+}
+
+.parameter-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.parameter-item {
+    margin-bottom: 10px;
+}
+
+.parameter-item label {
+    color: white;
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.parameter-item input {
+    background-color: white;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    width: 100%;
+}
+
+/* Navigation Buttons */
+.navigation-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+/* Footer Styles */
+footer {
+    background-color: #343a40;
+    color: white;
+    padding: 10px 0;
+    margin-top: 20px;
+}
+
+/* Autocomplete Styles */
+.ui-autocomplete {
+    max-height: 200px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    z-index: 9999;
+}
+
+.ui-menu-item {
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .parameter-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 576px) {
+    .parameter-grid {
+        grid-template-columns: 1fr;
+    }
+}

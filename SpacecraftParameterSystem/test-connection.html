@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Database Connection Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .success { color: green; }
+        .error { color: red; }
+        .info { color: blue; }
+        button { margin: 5px; padding: 10px; }
+        #results { margin-top: 20px; padding: 10px; border: 1px solid #ccc; }
+    </style>
+</head>
+<body>
+    <h1>Database Connection Test Page</h1>
+    
+    <p>This page helps you test if the database connection is working properly.</p>
+    
+    <h2>Quick Tests:</h2>
+    <button onclick="testSpacecraftAutocomplete()">Test Spacecraft Autocomplete</button>
+    <button onclick="testSubsystemAutocomplete()">Test Subsystem Autocomplete</button>
+    <button onclick="testDatabaseServlet()">Test Database Servlet</button>
+    
+    <div id="results"></div>
+    
+    <script>
+        function showResult(message, type = 'info') {
+            const results = document.getElementById('results');
+            const className = type === 'success' ? 'success' : (type === 'error' ? 'error' : 'info');
+            results.innerHTML += '<p class="' + className + '">' + message + '</p>';
+        }
+        
+        function clearResults() {
+            document.getElementById('results').innerHTML = '';
+        }
+        
+        function testSpacecraftAutocomplete() {
+            clearResults();
+            showResult('Testing spacecraft autocomplete...', 'info');
+            
+            fetch('autocomplete?type=spacecraft')
+                .then(response => response.json())
+                .then(data => {
+                    if (Array.isArray(data)) {
+                        showResult('✓ Spacecraft autocomplete works! Found ' + data.length + ' spacecraft:', 'success');
+                        showResult(JSON.stringify(data, null, 2), 'info');
+                    } else {
+                        showResult('✗ Unexpected response format: ' + JSON.stringify(data), 'error');
+                    }
+                })
+                .catch(error => {
+                    showResult('✗ Error testing spacecraft autocomplete: ' + error, 'error');
+                });
+        }
+        
+        function testSubsystemAutocomplete() {
+            clearResults();
+            showResult('Testing subsystem autocomplete...', 'info');
+            
+            fetch('autocomplete?type=subsystem')
+                .then(response => response.json())
+                .then(data => {
+                    if (Array.isArray(data)) {
+                        showResult('✓ Subsystem autocomplete works! Found ' + data.length + ' subsystems:', 'success');
+                        showResult(JSON.stringify(data, null, 2), 'info');
+                    } else {
+                        showResult('✗ Unexpected response format: ' + JSON.stringify(data), 'error');
+                    }
+                })
+                .catch(error => {
+                    showResult('✗ Error testing subsystem autocomplete: ' + error, 'error');
+                });
+        }
+        
+        function testDatabaseServlet() {
+            clearResults();
+            showResult('Opening database test servlet in new window...', 'info');
+            window.open('test-db', '_blank');
+        }
+    </script>
+    
+    <hr>
+    <h2>Manual Tests:</h2>
+    <p>You can also test these URLs manually:</p>
+    <ul>
+        <li><a href="autocomplete?type=spacecraft" target="_blank">autocomplete?type=spacecraft</a></li>
+        <li><a href="autocomplete?type=subsystem" target="_blank">autocomplete?type=subsystem</a></li>
+        <li><a href="test-db" target="_blank">test-db (Database Test Servlet)</a></li>
+        <li><a href="index.jsp" target="_blank">index.jsp (Main Application)</a></li>
+    </ul>
+    
+    <hr>
+    <h2>Common Issues and Solutions:</h2>
+    <ul>
+        <li><strong>404 Error:</strong> Make sure Tomcat is running and the application is deployed correctly</li>
+        <li><strong>500 Error:</strong> Check Tomcat logs for detailed error messages</li>
+        <li><strong>Empty responses:</strong> Database might not be initialized - try restarting Tomcat</li>
+        <li><strong>CORS errors:</strong> Make sure you're accessing from the same domain as the application</li>
+    </ul>
+</body>
+</html>
