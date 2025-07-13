@@ -18,12 +18,30 @@ body {
     font-size: 28px;
 }
 
-.page-info {
-    font-size: 16px;
+/* Top Inputs Row Styles */
+.top-inputs-row {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin: 0 15px;
 }
 
-.page-label {
+.top-inputs-row .form-label {
     font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.top-inputs-row .form-control {
+    border-radius: 4px;
+    border: 1px solid #ced4da;
+    padding: 8px 12px;
+}
+
+.top-inputs-row .form-control:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
 
 /* Sidebar Styles */
@@ -32,7 +50,7 @@ body {
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    height: calc(100vh - 180px);
+    height: calc(100vh - 300px);
     overflow-y: auto;
 }
 
@@ -49,10 +67,44 @@ body {
     border-radius: 8px;
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    height: calc(100vh - 180px);
+    height: calc(100vh - 300px);
     overflow-y: auto;
 }
 
+/* Page Info Container Styles */
+.page-info-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1a1a1a;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    border: 1px solid #333;
+}
+
+.page-info {
+    color: white;
+    font-size: 16px;
+}
+
+.page-label {
+    font-weight: bold;
+    color: #007bff;
+}
+
+/* Navigation Buttons in Page Info */
+.page-info-container .navigation-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.page-info-container .navigation-buttons .btn {
+    padding: 6px 12px;
+    font-size: 14px;
+}
+
+/* Parameter Grid Styles */
 .parameter-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -78,11 +130,43 @@ body {
     width: 100%;
 }
 
-/* Navigation Buttons */
-.navigation-buttons {
+/* Action Buttons Styles */
+.action-buttons {
     display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+    background-color: #1a1a1a;
+    border-radius: 8px;
+    border: 1px solid #333;
+}
+
+.action-buttons .btn {
+    min-width: 120px;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 6px;
+}
+
+.action-buttons .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.action-buttons .btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+.action-buttons .btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
+.action-buttons .btn-danger:hover {
+    background-color: #c82333;
+    border-color: #c82333;
 }
 
 /* Footer Styles */
@@ -111,10 +195,44 @@ footer {
     .parameter-grid {
         grid-template-columns: repeat(2, 1fr);
     }
+    
+    .page-info-container {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+    
+    .page-info-container .navigation-buttons {
+        justify-content: center;
+    }
+    
+    .action-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .action-buttons .btn {
+        width: 100%;
+        max-width: 200px;
+    }
 }
 
 @media (max-width: 576px) {
     .parameter-grid {
         grid-template-columns: 1fr;
+    }
+    
+    .top-inputs-row {
+        margin: 0 10px;
+        padding: 15px;
+    }
+    
+    .sidebar {
+        height: auto;
+        margin-bottom: 20px;
+    }
+    
+    .parameter-section {
+        height: auto;
     }
 }
