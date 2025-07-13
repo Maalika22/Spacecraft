@@ -7,6 +7,7 @@
     <title>Spacecraft Parameter Management System</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/custom.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
     <div class="container-fluid">
@@ -84,7 +85,10 @@
                 <!-- Save and Delete Buttons -->
                 <div class="action-buttons mt-4">
                     <button id="saveBtn" class="btn btn-primary btn-lg me-3">Save</button>
-                    <button id="deleteBtn" class="btn btn-danger btn-lg">Delete</button>
+                    <button id="deleteBtn" class="btn btn-danger btn-lg me-3">Delete</button>
+                    <button id="dashboardBtn" class="btn btn-success btn-lg" onclick="window.location.href='spacecraft-dashboard.jsp'">
+                        <i class="fas fa-tachometer-alt"></i> Dashboard
+                    </button>
                 </div>
             </div>
         </div>
